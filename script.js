@@ -22,9 +22,7 @@ var updater = function() {
     setInterval(function(){
         chrome.storage.sync.get("bday", function(items){
             if( items.bday) {
-                var bday = new Date(items.bday);
-                var today = new Date();
-                var age = parseFloat((today.getTime()-bday.getTime())/31536000000);
+                var age = parseFloat(((new Date()).getTime()-(new Date(items.bday)).getTime())/31536000000);
                 //console.log(age);
                 $("#age").html(age.toString().substring(0,15));
                 $("#age").slideDown(100);
